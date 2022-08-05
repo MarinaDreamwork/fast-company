@@ -62,8 +62,10 @@ const usersSlice = createSlice({
         authRequested: (state) => {
             state.error = null;
         },
-        userRateUpdateSuccessed: (state, payload) => {
-            // меняем у конкретного юзера - по id rate state.entities
+        userRateUpdateSuccessed: (state, action) => {
+             state.entities[
+                state.entities.findIndex((u) => u._id === action.payload._id)
+            ].rate = action.payload.rate;
         }
     }
 });

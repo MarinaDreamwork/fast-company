@@ -24,10 +24,6 @@ const UsersListPage = () => {
     const [sortBy, setSortBy] = useState({ path: "name", order: "asc" });
     const pageSize = 8;
 
-    const handleDelete = (userId) => {
-        console.log("delete user");
-        // setUsers(users.filter((user) => user._id !== userId));
-    };
     const handleToggleBookMark = (id) => {
         const newArray = users.map((user) => {
             if (user._id === id) {
@@ -62,14 +58,14 @@ const UsersListPage = () => {
     function filterUsers(data) {
         const filteredUsers = searchQuery
             ? data.filter(
-                  (user) =>
-                      user.name
-                          .toLowerCase()
-                          .indexOf(searchQuery.toLowerCase()) !== -1
-              )
+                (user) =>
+                    user.name
+                        .toLowerCase()
+                        .indexOf(searchQuery.toLowerCase()) !== -1
+            )
             : selectedProf
-            ? data.filter((user) => user.profession === selectedProf._id)
-            : data;
+                ? data.filter((user) => user.profession === selectedProf._id)
+                : data;
         return filteredUsers.filter((u) => u._id !== currentUserId);
     }
     const filteredUsers = filterUsers(users);
@@ -111,7 +107,6 @@ const UsersListPage = () => {
                         users={usersCrop}
                         onSort={handleSort}
                         selectedSort={sortBy}
-                        onDelete={handleDelete}
                         onToggleBookMark={handleToggleBookMark}
                     />
                 )}

@@ -51,7 +51,7 @@ export const loadCommentsList = (userId) => async (dispatch) => {
         dispatch(commentsRequestFiled(error.message));
     }
 };
-export const createComment = (payload) => async (dispatch, getState) => {
+export const createComment = (payload) => async (dispatch) => {
     dispatch(addCommentRequested());
     try {
         const { content } = await commentService.createComment(payload);
