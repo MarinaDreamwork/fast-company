@@ -12,7 +12,6 @@ const PORT = process.env.PORT || 8080;
 const app = express();
 
 app.set('port', PORT);
-console.log('PORT', PORT);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -22,7 +21,7 @@ app.use(cors({
   optionsSuccessStatus: 200
 }));
 app.use('/api', routes);
-console.log('process.env', process.env);
+
 if(process.env.NODE_ENV === 'production') {
   app.use('/', express.static(path.join(__dirname, 'client', 'build')));
   const indexPath = path.join(__dirname, 'client', 'build', 'index.html');
@@ -38,9 +37,7 @@ async function start() {
     await mongoose.connection.once('open', () => {
       initDatabase();
     });
-    console.log('process.env.MONGO_DB', process.env.MONGO_DB);
     await mongoose.connect(process.env.MONGO_DB);
-    console.log('PORT', PORT);
     app.listen(PORT, () => {
       console.log(chalk.greenBright(`Server has been started on port: ${PORT}`));
     });
