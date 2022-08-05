@@ -1,5 +1,6 @@
 # FullStack course project FAST-COMPANY
 <img src='./readme_assets/userPage.png' />
+<a href='https://fast-company-test-application.herokuapp.com/' >Live demo</a>
 
 ## Project description
 1. Register in application
