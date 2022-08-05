@@ -21,7 +21,7 @@ app.use(cors({
   optionsSuccessStatus: 200
 }));
 app.use('/api', routes);
-
+console.log('process.env', process.env);
 if(process.env.NODE_ENV === 'production') {
   app.use('/', express.static(path.join(__dirname, 'client', 'build')));
   const indexPath = path.join(__dirname, 'client', 'build', 'index.html');
