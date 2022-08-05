@@ -12,6 +12,7 @@ const PORT = process.env.PORT || 8080;
 const app = express();
 
 app.set('port', PORT);
+console.log('PORT', PORT);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -34,11 +35,12 @@ if(process.env.NODE_ENV === 'production') {
 
 async function start() {
   try {
-    mongoose.connection.once('open', () => {
+    await mongoose.connection.once('open', () => {
       initDatabase();
     });
     console.log('process.env.MONGO_DB', process.env.MONGO_DB);
     await mongoose.connect(process.env.MONGO_DB);
+    console.log('PORT', PORT);
     app.listen(PORT, () => {
       console.log(chalk.greenBright(`Server has been started on port: ${PORT}`));
     });
