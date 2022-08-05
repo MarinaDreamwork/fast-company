@@ -1,0 +1,37 @@
+{
+  "name": "fast-company-server",
+  "version": "1.0.0",
+  "description": "backend for app fast-company",
+  "main": "app.js",
+  "scripts": {
+    "start": "NODE_ENV=production node app.js",
+    "serve": "cross-env NODE_ENV=development nodemon app.js",
+    "client": "cd client && npm start",
+    "dev": "concurrently \"npm run serve\" \"npm run client\"",
+    "install-client": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm install && npm run install-client && npm run build"
+  },
+  "author": "Marina Trushina <silaevamo@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "chalk": "^4.1.2",
+    "concurrently": "^7.3.0",
+    "config": "^3.3.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-validator": "^6.14.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.4.4"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "nodemon": "^2.0.19"
+  },
+  "keywords": [
+    "node",
+    "express"
+  ]
+}
