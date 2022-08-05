@@ -7,13 +7,19 @@ const cors = require('cors');
 const path = require('path');
 const initDatabase = require('./startUp/initDatabase');
 const routes = require('./routes');
-const PORT = config.get('port') ?? 8080;
+const PORT = process.env.PORT || 8080;
 
 const app = express();
 
+app.set('port', PORT);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cors());
+app.use(cors({
+  credentials: true,
+  origin: ['http://localhost:3000'],
+  optionsSuccessStatus: 200
+}));
 app.use('/api', routes);
 
 if(process.env.NODE_ENV === 'production') {
